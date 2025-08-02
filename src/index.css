@@ -1,13 +1,175 @@
-body {
+/* General page styles */
+body, html {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f0f2f5;
+  overflow: hidden; /* Prevents scrollbars from appearing due to the video */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Container for the entire page content - z-index is crucial */
+.login-page-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10; /* Make sure this is higher than the video's z-index */
+}
+
+/* The login form card */
+.login-box {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 40px 32px 32px 32px;
+  border-radius: 20px;
+  max-width: 350px;
+  width: 100%;
+  box-shadow: 0 6px 40px 0 rgba(35, 50, 56, 0.2), 0 1.5px 8px 0 rgba(0, 0, 0, 0.04);
+  position: relative;
+  z-index: 10;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.logo {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #7fa3b7;
+  margin-top: 2px;
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #d4e1ec;
+  border-radius: 8px;
+  background: #f8fbfd;
+  font-size: 1em;
+  transition: border 0.2s;
+}
+
+.input:focus {
+  border-color: #3bb2b8;
+  outline: none;
+}
+
+.main-btn {
+  background: linear-gradient(132deg, #42e695 0%, #3bb2b8 100%);
+  color: white;
+  padding: 12px 0;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+  margin-top: 4px;
+  cursor: pointer;
+  font-size: 1.08em;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.main-btn:hover {
+  background: linear-gradient(132deg, #3bb2b8 0%, #42e695 100%);
+  box-shadow: 0 2px 8px rgba(60, 170, 170, 0.18);
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: -6px;
+  margin-bottom: 4px;
+}
+
+.opt-btn {
+  background: none;
+  border: none;
+  color: #3bb2b8;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.98em;
+  font-style: italic;
+  transition: color 0.2s;
+}
+
+.opt-btn:hover {
+  color: #42e695;
+}
+
+.check-row {
+  text-align: center;
+  margin-bottom: 6px;
+  font-size: 0.9em;
+}
+
+.camera-btn {
+  width: 100%;
+  padding: 10px 0;
+  background: #ebf6f9;
+  color: #3bb2b8;
+  border: 1px solid #b7e2ea;
+  border-radius: 8px;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.camera-btn:hover {
+  background: #dbf3f9;
+}
+
+.camera-modal {
+  position: absolute;
+  top: 93%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: #ffffff;
+  padding: 18px 12px 10px;
+  border-radius: 20px;
+  margin-top: 18px;
+  box-shadow: 0 6px 30px 0 rgba(0, 0, 0, 0.17);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 20;
+}
+
+.camera-video {
+  border-radius: 13px;
+  border: 2px solid #3bb2b8;
+}
+
+/* Video Background Styles */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1; /* Puts the video behind everything else */
+}
+
+.video-background iframe {
+  /* This ensures the video covers the entire viewport */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: 100vw;
+  height: 100vh;
 }
